@@ -1,20 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+:root {
+  --black: #0A0A0A;
+  --dark: #111111;
+  --purple-dark: #3B0764;
+  --purple: #7C3AED;
+  --white: #F8F8F8;
+  --gray: #555555;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: #0A0A0A;
+  color: #F8F8F8;
 }
 
 body {
-  background-color: #0D0D0D;
-  color: #F5F5F5;
+  font-family: 'Inter', sans-serif;
 }
 
-.font-display {
-  font-family: var(--font-bebas), Impact, sans-serif;
+.font-bebas {
+  font-family: 'Bebas Neue', sans-serif;
 }
 
-.font-body {
-  font-family: var(--font-inter), system-ui, sans-serif;
+/* Masonry grid */
+.masonry-grid {
+  columns: 3;
+  column-gap: 4px;
+}
+
+@media (max-width: 768px) {
+  .masonry-grid {
+    columns: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .masonry-grid {
+    columns: 1;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 4px;
+  position: relative;
+  overflow: hidden;
 }

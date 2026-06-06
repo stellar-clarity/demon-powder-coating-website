@@ -1,38 +1,23 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-const bebasNeue = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-bebas",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
 export const metadata: Metadata = {
-  title: "Demon Powder Coating | Castle Rock, CO",
-  description:
-    "Premium powder coating services in Castle Rock, CO. Custom wheels, auto parts, industrial coating, and restoration. Built Different. Coated to Last.",
+  title: "DEMON Powder Coating — Castle Rock, CO",
+  description: "Premium powder coating in Castle Rock, CO. Wheels, auto parts, industrial, restoration. Built different. Finished right.",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
-      <body
-        className={`${bebasNeue.variable} ${inter.variable} bg-bg text-light font-body antialiased`}
-      >
-        <Navbar />
-        <main>{children}</main>
+      <body>
+        <Nav />
+        {children}
         <Footer />
       </body>
     </html>

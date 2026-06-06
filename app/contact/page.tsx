@@ -1,169 +1,194 @@
-export default function ContactPage() {
+'use client';
+
+export default function Contact() {
   return (
-    <>
-      {/* Header */}
-      <section className="pt-32 pb-16 px-6 bg-surface border-b border-bg">
-        <div className="max-w-7xl mx-auto">
-          <p className="font-display text-fire text-xl tracking-[0.3em] mb-3">REACH OUT</p>
-          <h1 className="font-display text-7xl md:text-9xl text-light tracking-wider leading-none">
-            CONTACT
-          </h1>
-        </div>
-      </section>
+    <main
+      style={{
+        background: '#0A0A0A',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '8rem 2rem 4rem',
+      }}
+    >
+      {/* Phone — huge */}
+      <a
+        href="tel:+17205550198"
+        style={{
+          fontFamily: "'Bebas Neue', sans-serif",
+          fontSize: 'clamp(3rem, 8vw, 6rem)',
+          color: '#F8F8F8',
+          textDecoration: 'none',
+          letterSpacing: '0.03em',
+          lineHeight: 1,
+          display: 'block',
+          textAlign: 'center',
+          transition: 'color 0.2s',
+        }}
+        onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = '#7C3AED')}
+        onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = '#F8F8F8')}
+      >
+        (720) 555-0198
+      </a>
 
-      <section className="py-24 px-6 bg-bg">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
-          {/* Contact Info */}
-          <div>
-            <h2 className="font-display text-5xl text-light tracking-wider mb-10">
-              LET&apos;S TALK ABOUT<br />
-              <span className="text-accent">YOUR PROJECT.</span>
-            </h2>
+      {/* Email */}
+      <a
+        href="mailto:kevin@demonpowdercoating.com"
+        style={{
+          fontFamily: "'Inter', sans-serif",
+          fontSize: '0.8rem',
+          color: '#555555',
+          textDecoration: 'none',
+          marginTop: '1rem',
+          letterSpacing: '0.05em',
+          transition: 'color 0.2s',
+        }}
+        onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = '#7C3AED')}
+        onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = '#555555')}
+      >
+        kevin@demonpowdercoating.com
+      </a>
 
-            <div className="space-y-8 text-muted font-body">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-accent flex items-center justify-center text-xl flex-shrink-0">
-                  📍
-                </div>
-                <div>
-                  <p className="font-display text-2xl tracking-widest text-light mb-1">LOCATION</p>
-                  <p>Castle Rock, CO 80104</p>
-                  <p className="text-sm mt-1">By appointment — call ahead for drop-off.</p>
-                </div>
-              </div>
+      {/* Location */}
+      <p
+        style={{
+          fontFamily: "'Inter', sans-serif",
+          fontSize: '0.7rem',
+          letterSpacing: '0.2em',
+          color: '#555555',
+          textTransform: 'uppercase',
+          marginTop: '0.5rem',
+        }}
+      >
+        Castle Rock, CO
+      </p>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-accent flex items-center justify-center text-xl flex-shrink-0">
-                  📞
-                </div>
-                <div>
-                  <p className="font-display text-2xl tracking-widest text-light mb-1">PHONE</p>
-                  <a href="tel:7205550198" className="hover:text-accent transition-colors">
-                    (720) 555-0198
-                  </a>
-                  <p className="text-sm mt-1">Mon–Fri 8am–5pm, Sat 9am–2pm</p>
-                </div>
-              </div>
+      {/* Divider */}
+      <div
+        style={{
+          width: '3px',
+          height: '3rem',
+          background: '#7C3AED',
+          margin: '3rem 0',
+        }}
+      />
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-accent flex items-center justify-center text-xl flex-shrink-0">
-                  ✉️
-                </div>
-                <div>
-                  <p className="font-display text-2xl tracking-widest text-light mb-1">EMAIL</p>
-                  <a
-                    href="mailto:kevin@demonpowdercoating.com"
-                    className="hover:text-accent transition-colors break-all"
-                  >
-                    kevin@demonpowdercoating.com
-                  </a>
-                  <p className="text-sm mt-1">Typically respond within 24 hours.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-12 bg-surface border border-bg p-6">
-              <p className="font-display text-2xl tracking-widest text-fire mb-3">PRO TIP</p>
-              <p className="text-muted text-sm leading-relaxed font-body">
-                Not sure what finish you want? Bring in a reference photo or describe the vibe —
-                we&apos;ve got 500+ colors in stock and can mix custom. The clearer your vision,
-                the better we can nail it.
-              </p>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="bg-surface border border-bg p-8">
-            <h3 className="font-display text-4xl tracking-wider text-light mb-8">GET A QUOTE</h3>
-            <form
-              action="mailto:kevin@demonpowdercoating.com"
-              method="post"
-              encType="text/plain"
-              className="space-y-6"
+      {/* Form */}
+      <form
+        action="mailto:kevin@demonpowdercoating.com"
+        method="get"
+        encType="text/plain"
+        style={{
+          width: '100%',
+          maxWidth: '560px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.25rem',
+        }}
+      >
+        {[
+          { name: 'name', label: 'Name', type: 'text' },
+          { name: 'email', label: 'Email', type: 'email' },
+        ].map((f) => (
+          <div key={f.name}>
+            <label
+              htmlFor={f.name}
+              style={{
+                display: 'block',
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '0.6rem',
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: '#555555',
+                marginBottom: '0.5rem',
+              }}
             >
-              <div>
-                <label className="block font-display text-lg tracking-widest text-muted mb-2">
-                  YOUR NAME *
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  className="w-full bg-bg border border-bg focus:border-accent outline-none text-light font-body px-4 py-3 transition-colors"
-                  placeholder="John Smith"
-                />
-              </div>
-
-              <div>
-                <label className="block font-display text-lg tracking-widest text-muted mb-2">
-                  PHONE
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  className="w-full bg-bg border border-bg focus:border-accent outline-none text-light font-body px-4 py-3 transition-colors"
-                  placeholder="(720) 555-0000"
-                />
-              </div>
-
-              <div>
-                <label className="block font-display text-lg tracking-widest text-muted mb-2">
-                  EMAIL *
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  className="w-full bg-bg border border-bg focus:border-accent outline-none text-light font-body px-4 py-3 transition-colors"
-                  placeholder="you@example.com"
-                />
-              </div>
-
-              <div>
-                <label className="block font-display text-lg tracking-widest text-muted mb-2">
-                  WHAT NEEDS COATING? *
-                </label>
-                <select
-                  name="service"
-                  className="w-full bg-bg border border-bg focus:border-accent outline-none text-light font-body px-4 py-3 transition-colors"
-                >
-                  <option value="">Select a service...</option>
-                  <option>Custom Wheels</option>
-                  <option>Automotive Parts</option>
-                  <option>Motorcycle Parts</option>
-                  <option>Industrial / Fabrication</option>
-                  <option>Outdoor Furniture</option>
-                  <option>Restoration</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block font-display text-lg tracking-widest text-muted mb-2">
-                  TELL US MORE
-                </label>
-                <textarea
-                  name="message"
-                  rows={4}
-                  className="w-full bg-bg border border-bg focus:border-accent outline-none text-light font-body px-4 py-3 transition-colors resize-none"
-                  placeholder="Describe your parts, color ideas, timeline, etc."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-accent hover:bg-red-700 text-light font-display text-2xl tracking-widest py-4 transition-colors"
-              >
-                SEND MY REQUEST
-              </button>
-
-              <p className="text-muted text-xs text-center font-body">
-                This will open your email client. Or call us directly at (720) 555-0198.
-              </p>
-            </form>
+              {f.label}
+            </label>
+            <input
+              id={f.name}
+              name={f.name}
+              type={f.type}
+              required
+              style={{
+                width: '100%',
+                background: 'transparent',
+                border: 'none',
+                borderBottom: '1px solid #333333',
+                padding: '0.6rem 0',
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '0.9rem',
+                color: '#F8F8F8',
+                outline: 'none',
+                transition: 'border-color 0.2s',
+              }}
+              onFocus={(e) => ((e.currentTarget as HTMLInputElement).style.borderColor = '#7C3AED')}
+              onBlur={(e) => ((e.currentTarget as HTMLInputElement).style.borderColor = '#333333')}
+            />
           </div>
+        ))}
+
+        <div>
+          <label
+            htmlFor="body"
+            style={{
+              display: 'block',
+              fontFamily: "'Inter', sans-serif",
+              fontSize: '0.6rem',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              color: '#555555',
+              marginBottom: '0.5rem',
+            }}
+          >
+            What do you need coated?
+          </label>
+          <textarea
+            id="body"
+            name="body"
+            rows={4}
+            required
+            style={{
+              width: '100%',
+              background: 'transparent',
+              border: '1px solid #333333',
+              padding: '0.75rem',
+              fontFamily: "'Inter', sans-serif",
+              fontSize: '0.9rem',
+              color: '#F8F8F8',
+              outline: 'none',
+              resize: 'vertical',
+              transition: 'border-color 0.2s',
+            }}
+            onFocus={(e) => ((e.currentTarget as HTMLTextAreaElement).style.borderColor = '#7C3AED')}
+            onBlur={(e) => ((e.currentTarget as HTMLTextAreaElement).style.borderColor = '#333333')}
+          />
         </div>
-      </section>
-    </>
+
+        <button
+          type="submit"
+          style={{
+            background: '#7C3AED',
+            border: 'none',
+            color: '#F8F8F8',
+            fontFamily: "'Inter', sans-serif",
+            fontSize: '0.65rem',
+            letterSpacing: '0.25em',
+            textTransform: 'uppercase',
+            fontWeight: 500,
+            padding: '1rem 2rem',
+            cursor: 'pointer',
+            transition: 'background 0.2s',
+            alignSelf: 'flex-start',
+          }}
+          onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.background = '#6D28D9')}
+          onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.background = '#7C3AED')}
+        >
+          Submit
+        </button>
+      </form>
+    </main>
   );
 }

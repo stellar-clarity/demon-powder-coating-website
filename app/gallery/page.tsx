@@ -1,118 +1,112 @@
-const galleryImages = [
-  {
-    src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-    alt: "Custom coated wheels",
-    label: "Matte Black Wheels",
-    span: "col-span-2 row-span-2",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1608455171836-a92c54840d6b?w=800&q=80",
-    alt: "Brake caliper red",
-    label: "Red Brake Calipers",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1567346322503-f9f2e2a7c3e0?w=800&q=80",
-    alt: "Motorcycle frame",
-    label: "Matte Black Frame",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
-    alt: "Workshop shot",
-    label: "In The Shop",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612544448445-b8232cff3b6c?w=800&q=80",
-    alt: "Orange coated parts",
-    label: "Fire Orange Finish",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&q=80",
-    alt: "Restoration project",
-    label: "Full Restoration",
-    span: "col-span-2",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1611267254323-4db7b39c732c?w=800&q=80",
-    alt: "Gloss black rim",
-    label: "Gloss Black Rims",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1600712242805-5f78671b24da?w=800&q=80",
-    alt: "Industrial parts",
-    label: "Industrial Coating",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-    alt: "Custom finish",
-    label: "Two-Tone Custom",
-    span: "",
-  },
+'use client';
+
+import { useState } from 'react';
+
+const ALL_IMAGES = [
+  { src: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=800&q=80', cat: 'WHEELS', aspect: 'landscape' },
+  { src: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80', cat: 'INDUSTRIAL', aspect: 'portrait' },
+  { src: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80', cat: 'AUTO', aspect: 'landscape' },
+  { src: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&q=80', cat: 'INDUSTRIAL', aspect: 'square' },
+  { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', cat: 'AUTO', aspect: 'landscape' },
+  { src: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&q=80', cat: 'WHEELS', aspect: 'portrait' },
+  { src: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80', cat: 'AUTO', aspect: 'square' },
+  { src: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&q=80', cat: 'CUSTOM', aspect: 'landscape' },
+  { src: 'https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=800&q=80', cat: 'CUSTOM', aspect: 'portrait' },
+  { src: 'https://images.unsplash.com/photo-1581092921461-39b2f2df9c8a?w=800&q=80', cat: 'INDUSTRIAL', aspect: 'landscape' },
+  { src: 'https://images.unsplash.com/photo-1590412200988-a436970781fa?w=800&q=80', cat: 'WHEELS', aspect: 'square' },
+  { src: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&q=80', cat: 'AUTO', aspect: 'portrait' },
 ];
 
-export default function GalleryPage() {
+const FILTERS = ['ALL', 'WHEELS', 'AUTO', 'INDUSTRIAL', 'CUSTOM'];
+
+export default function Gallery() {
+  const [active, setActive] = useState('ALL');
+
+  const filtered = active === 'ALL' ? ALL_IMAGES : ALL_IMAGES.filter((i) => i.cat === active);
+
   return (
-    <>
-      {/* Header */}
-      <section className="pt-32 pb-16 px-6 bg-surface border-b border-bg">
-        <div className="max-w-7xl mx-auto">
-          <p className="font-display text-fire text-xl tracking-[0.3em] mb-3">OUR WORK</p>
-          <h1 className="font-display text-7xl md:text-9xl text-light tracking-wider leading-none">
-            GALLERY
-          </h1>
-          <p className="text-muted font-body mt-4 max-w-xl">
-            Every finish tells a story. Browse our recent work across wheels, automotive parts, industrial fabrication, and restoration.
-          </p>
-        </div>
-      </section>
+    <main style={{ background: '#0A0A0A', minHeight: '100vh' }}>
+      {/* Filter tabs */}
+      <div
+        style={{
+          paddingTop: '6rem',
+          paddingBottom: '2rem',
+          display: 'flex',
+          gap: '2rem',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        {FILTERS.map((f) => (
+          <button
+            key={f}
+            onClick={() => setActive(f)}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              fontFamily: "'Inter', sans-serif",
+              fontSize: '0.65rem',
+              letterSpacing: '0.25em',
+              textTransform: 'uppercase',
+              color: active === f ? '#7C3AED' : '#555555',
+              padding: '0.5rem 0',
+              borderBottom: active === f ? '1px solid #7C3AED' : '1px solid transparent',
+              transition: 'color 0.2s',
+            }}
+          >
+            {f}
+          </button>
+        ))}
+      </div>
 
-      {/* Masonry Grid */}
-      <section className="py-16 px-6 bg-bg">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[220px]">
-            {galleryImages.map((img, i) => (
-              <div
-                key={i}
-                className={`relative overflow-hidden group cursor-pointer ${img.span}`}
+      {/* Masonry grid — full bleed */}
+      <div className="masonry-grid" style={{ padding: 0 }}>
+        {filtered.map((img, i) => (
+          <div key={i} className="masonry-item" style={{ position: 'relative' }}>
+            <img
+              src={img.src}
+              alt=""
+              aria-hidden="true"
+              style={{
+                width: '100%',
+                display: 'block',
+                height: img.aspect === 'portrait' ? '500px' : img.aspect === 'square' ? '350px' : '260px',
+                objectFit: 'cover',
+              }}
+            />
+            {/* Hover overlay */}
+            <div
+              className="gallery-overlay"
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'rgba(124,58,237,0.75)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                opacity: 0,
+                transition: 'opacity 0.3s',
+              }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.opacity = '1')}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.opacity = '0')}
+            >
+              <span
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.3em',
+                  color: '#F8F8F8',
+                  textTransform: 'uppercase',
+                  fontWeight: 500,
+                }}
               >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-bg/0 group-hover:bg-bg/50 transition-colors duration-300 flex items-end">
-                  <div className="p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 w-full">
-                    <span className="font-display text-2xl tracking-widest text-accent">
-                      {img.label}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
+                {img.cat}
+              </span>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 px-6 bg-accent text-center">
-        <h2 className="font-display text-5xl md:text-7xl text-light tracking-wider mb-4">
-          WANT RESULTS LIKE THESE?
-        </h2>
-        <p className="text-light/80 font-body text-lg mb-8">
-          Bring your parts in. Let&apos;s talk about what we can build together.
-        </p>
-        <a
-          href="/contact"
-          className="inline-block bg-bg hover:bg-surface text-light font-display text-2xl tracking-widest px-12 py-5 transition-colors"
-        >
-          GET A FREE QUOTE
-        </a>
-      </section>
-    </>
+        ))}
+      </div>
+    </main>
   );
 }

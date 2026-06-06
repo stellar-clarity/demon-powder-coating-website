@@ -1,121 +1,170 @@
-import Link from "next/link";
+'use client';
 
-export default function AboutPage() {
+const STEPS = [
+  { num: '01', label: 'Sand Blast' },
+  { num: '02', label: 'Prep' },
+  { num: '03', label: 'Coat' },
+  { num: '04', label: 'Cure' },
+];
+
+export default function About() {
   return (
-    <>
-      {/* Header */}
-      <section className="pt-32 pb-16 px-6 bg-surface border-b border-bg">
-        <div className="max-w-7xl mx-auto">
-          <p className="font-display text-fire text-xl tracking-[0.3em] mb-3">THE STORY</p>
-          <h1 className="font-display text-7xl md:text-9xl text-light tracking-wider leading-none">
-            ABOUT
+    <main style={{ background: '#0A0A0A', paddingTop: '5rem' }}>
+
+      {/* Full-width top image */}
+      <div style={{ width: '100%', height: '60vh', overflow: 'hidden', position: 'relative' }}>
+        <img
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85"
+          alt="Workshop"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            display: 'block',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to bottom, transparent 40%, #0A0A0A)',
+          }}
+        />
+      </div>
+
+      {/* Two-column bio */}
+      <section
+        style={{
+          maxWidth: '1100px',
+          margin: '0 auto',
+          padding: '5rem 2rem',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '4rem',
+          alignItems: 'start',
+        }}
+        className="about-grid"
+      >
+        {/* Left */}
+        <div>
+          <h1
+            style={{
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+              color: '#F8F8F8',
+              lineHeight: 1,
+              letterSpacing: '0.02em',
+            }}
+          >
+            Kevin Eitniear<br />
+            <span style={{ color: '#7C3AED' }}>Demon Powder Coating</span>
           </h1>
         </div>
-      </section>
 
-      {/* Kevin's Story */}
-      <section className="py-24 px-6 bg-bg">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div className="relative">
-            <img
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80"
-              alt="Kevin in the shop"
-              className="w-full h-[500px] object-cover"
-            />
-            <div className="absolute -bottom-4 -right-4 bg-accent px-6 py-4">
-              <p className="font-display text-3xl text-light tracking-widest">KEVIN EITNIEAR</p>
-              <p className="font-display text-lg text-light/70 tracking-widest">OWNER & OPERATOR</p>
-            </div>
-          </div>
-
-          <div>
-            <p className="font-display text-fire text-xl tracking-[0.3em] mb-4">CASTLE ROCK, CO</p>
-            <h2 className="font-display text-6xl text-light tracking-wider leading-none mb-8">
-              BUILT FROM<br />
-              <span className="text-accent">PASSION.</span>
-            </h2>
-            <div className="space-y-5 text-muted font-body leading-relaxed">
-              <p>
-                Kevin Eitniear has spent his career surrounded by metal, machines, and the
-                satisfaction of making things look and perform better. What started as a
-                passion for custom automotive work evolved into Demon Powder Coating — a
-                full-service coating shop serving Castle Rock and the greater Denver metro.
-              </p>
-              <p>
-                The name &quot;Demon&quot; isn&apos;t just branding. It&apos;s an attitude. An obsession with
-                getting things right. An intolerance for mediocrity. When a part leaves
-                Kevin&apos;s shop, it goes out looking sharp and built to last — or it doesn&apos;t
-                go out at all.
-              </p>
-              <p>
-                From weekend car builds to commercial fabrication runs, Demon handles it all
-                with the same level of attention. No big corporate workflow. No cutting
-                corners. Just one craftsman, one shop, and one standard: do it right.
-              </p>
-            </div>
-          </div>
+        {/* Right */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.5rem',
+          }}
+        >
+          {[
+            "Started in a garage in Castle Rock with a used gun and a borrowed oven. No marketing budget, no fancy signage — just a knack for doing things right the first time.",
+            "Fifteen years in, nothing's changed except the booth. Still personally touching every job. Still chasing a finish that looks better than the factory.",
+            "Demon isn't a shop with a logo. It's a standard. If it leaves here, it leaves right.",
+            "Castle Rock. Colorado. The work speaks.",
+          ].map((p, i) => (
+            <p
+              key={i}
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '0.88rem',
+                color: '#aaaaaa',
+                lineHeight: 1.9,
+                margin: 0,
+              }}
+            >
+              {p}
+            </p>
+          ))}
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-24 px-6 bg-surface">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="font-display text-fire text-xl tracking-[0.3em] mb-3">WHAT DRIVES US</p>
-            <h2 className="font-display text-6xl md:text-8xl text-light tracking-wider">
-              THE DEMON CODE
-            </h2>
-          </div>
+      {/* THE PROCESS */}
+      <section style={{ background: '#111111', padding: '5rem 2rem' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <h2
+            style={{
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: 'clamp(2rem, 4vw, 3rem)',
+              color: '#F8F8F8',
+              letterSpacing: '0.05em',
+              marginBottom: '3rem',
+              textAlign: 'center',
+            }}
+          >
+            The Process
+          </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "OBSESSIVE PREP",
-                icon: "⚡",
-                desc: "90% of a great powder coat is in the prep work. We blast, clean, and prep every surface to bare metal before a single molecule of powder touches it.",
-              },
-              {
-                title: "ZERO SHORTCUTS",
-                icon: "🔥",
-                desc: "We run the right cure times, the right temperatures, the right film thicknesses. Not the fast way — the right way. Every time.",
-              },
-              {
-                title: "STAND BEHIND IT",
-                icon: "🛡️",
-                desc: "If something isn't right, we make it right. Full stop. Our reputation in Castle Rock matters more than any single job.",
-              },
-            ].map((v) => (
-              <div key={v.title} className="border border-bg hover:border-accent group transition-all p-10 text-center">
-                <div className="text-5xl mb-6">{v.icon}</div>
-                <h3 className="font-display text-3xl tracking-wider text-light group-hover:text-accent transition-colors mb-4">
-                  {v.title}
-                </h3>
-                <p className="text-muted text-sm leading-relaxed">{v.desc}</p>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 0,
+            }}
+            className="process-row"
+          >
+            {STEPS.map((step, i) => (
+              <div key={step.num} style={{ display: 'flex', alignItems: 'center' }}>
+                <div style={{ textAlign: 'center', padding: '0 2rem' }}>
+                  <div
+                    style={{
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '50%',
+                      border: '2px solid #7C3AED',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      margin: '0 auto 0.75rem',
+                      fontFamily: "'Bebas Neue', sans-serif",
+                      fontSize: '1rem',
+                      color: '#7C3AED',
+                    }}
+                  >
+                    {step.num}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: '0.65rem',
+                      letterSpacing: '0.2em',
+                      textTransform: 'uppercase',
+                      color: '#F8F8F8',
+                    }}
+                  >
+                    {step.label}
+                  </div>
+                </div>
+                {i < STEPS.length - 1 && (
+                  <div style={{ width: '80px', height: '2px', background: '#7C3AED', flexShrink: 0 }} />
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Location */}
-      <section className="py-24 px-6 bg-bg">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="font-display text-fire text-xl tracking-[0.3em] mb-4">WHERE TO FIND US</p>
-          <h2 className="font-display text-6xl text-light tracking-wider mb-6">
-            CASTLE ROCK, CO
-          </h2>
-          <p className="text-muted font-body text-lg max-w-xl mx-auto mb-10">
-            We&apos;re locally owned and operated. Drop your parts off in person — we always want to
-            see what we&apos;re working with and give you an accurate, honest quote.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-accent hover:bg-red-700 text-light font-display text-2xl tracking-widest px-12 py-5 transition-colors"
-          >
-            GET IN TOUCH
-          </Link>
-        </div>
-      </section>
-    </>
+      <style>{`
+        @media (max-width: 768px) {
+          .about-grid { grid-template-columns: 1fr !important; }
+          .process-row { flex-direction: column !important; gap: 1.5rem !important; }
+          .process-row > div { flex-direction: column; gap: 1rem; }
+        }
+      `}</style>
+    </main>
   );
 }
